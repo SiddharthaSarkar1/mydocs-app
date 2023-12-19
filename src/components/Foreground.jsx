@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Card from "./Card";
 
+
 const Foreground = () => {
+
+  const ref = useRef(null);
+
   const data = [
     {
       id: 1,
@@ -11,7 +15,7 @@ const Foreground = () => {
       tag: {
         isOpen: true,
         tagTitle: "Download Now",
-        tagColor: "green",
+        tagColor: "blue",
       },
     },
     {
@@ -32,7 +36,7 @@ const Foreground = () => {
       close: true,
       tag: {
         isOpen: true,
-        tagTitle: "Download Now",
+        tagTitle: "Upload",
         tagColor: "green",
       },
     },
@@ -40,9 +44,9 @@ const Foreground = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-full z-[3] p-5 flex gap-3 flex-wrap">
+      <div ref={ref} className="fixed top-0 left-0 w-full h-full z-[3] p-5 flex gap-3 flex-wrap">
         {data.map((item, index) => (
-          <Card key={item.id} data={item} />
+          <Card key={item.id} data={item} reference={ref} />
         ))}
       </div>
     </>
